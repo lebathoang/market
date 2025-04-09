@@ -1,0 +1,56 @@
+.footer {
+  background: #222;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+}
+.footer a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+.footer-content {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.footer-section {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+}
+.footer-section h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-section ul li {
+  margin: 5px 0;
+}
+.footer-section ul li a {
+  text-decoration: none;
+  color: #333;
+}
+.logo {
+  text-align: center;
+}
+.logo img {
+  height: 50px;
+}
+.contact-info {
+  text-align: center;
+  margin-top: 10px;
+}
+.customer-support {
+  text-align: center;
+}
+.customer-support img {
+  height: 40px;
+  display: block;
+  margin: auto;
+}

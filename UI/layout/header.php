@@ -2,107 +2,158 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./header.css">
 </head>
 
 <style>
-    .header {
-        background-image: url(https://d3design.vn/uploads/Summer%20drink%20menu%20promotion%20banner%20template7.jpg);
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  }
 
-    .logo {
-        width: 10%;
-    }
+  .logo img {
+    height: 50px;
+  }
 
-    .logo img {
-        width: 50%;
-        margin-top: 5px;
-    }
+  .search-bar {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+  }
 
-    .header .search {
-        border: 1px solid silver;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        border-radius: 15px;
-        width: 350px;
-    }
+  .search-bar input {
+    padding: 8px;
+    border: none;
+    outline: none;
+    width: 420px;
+  }
 
-    .header .search input {
-        border: none;
-        outline: none;
-        padding-left: 10px;
-        font-weight: 600;
-        border-radius: 15px;
-        width: 325px;
-        height: 28px;
-        background-color: transparent;
-    }
+  .search-bar .search {
+    background-color: #4caf50;
+    color: white;
+    width: 70px;
+    cursor: pointer;
+  }
 
-    .header .search i {
-        width: 33px;
-        height: 30px;
-        text-align: center;
-        align-content: center;
-        border-radius: 15px;
-        color: silver;
-    }
+  .header-icons {
+    display: flex;
+    gap: 15px;
+  }
 
-    .header .search i:hover {
-        cursor: pointer;
-        background-color: #8ccbef;
-    }
+  .header-icons .choose {
+    color: black;
+    text-decoration: none;
+  }
 
-    .account {
-        display: flex;
-    }
+  .header-icons .icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 3px 11px;
+    border-radius: 11px;
+    border: 1px solid white;
+  }
 
-    .account .cart {
-        padding-left: 15px;
-    }
+  .header-icons .icon:hover {
+    border: 1px solid silver;
+  }
 
-    .account i {
-        font-size: 25px;
-        color: white;
-    }
+  .header-icons .icon i {
+    padding-right: 5px;
+  }
 
-    .account i:hover {
-        cursor: pointer;
-    }
+  .header-icons .icon .account {
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+
+  /* Navigation Menu */
+  nav {
+    background-color: #007bff;
+    padding: 10px;
+  }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li {
+    margin: 0 15px;
+  }
+
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
 </style>
 
 <body>
-    <div class="header">
-        <div class="logo">
-            <a href="../home/run.php">
-                <img src="https://img.pikbest.com/png-images/elegant-and-creative-fruit-logo-cartoon-ananas-design-juice-drink-and-food-graphic-design_5640020.png!w700wp"
-                    alt="">
-            </a>
-        </div>
-        <div>
-
-        </div>
-        <form action="../../admin/search/management.php" method="post">
-            <div class="search">
-                <input type="text" name="value_search" placeholder="Search">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
-        </form>
-        <div class="account">
-            <div>
-                <a href="../../sign_in/login/login.php">
-                    <i class="fa-regular fa-circle-user"></i>
-                </a>
-            </div>
-            <i class="fa-solid fa-cart-shopping cart"></i>
-        </div>
+  <header>
+    <div class="logo">
+      <a href="../home/index.php">
+        <img src="../../images/logo.png" alt="Evo Office">
+      </a>
     </div>
+    <div class="search-bar">
+      <form action="../search/index.php" method="post">
+        <input type="text" placeholder="Tìm kiếm...." name="keyword">
+        <input type="submit" class="search" name="tim_kiem" value="Search"></input>
+      </form>
+    </div>
+    <div class="header-icons">
+      <a class="choose" href="../cart/index.php">
+        <div class="icon">
+          <i class="fa-solid fa-cart-plus"></i>
+          <span>Giỏ hàng 0</span>
+        </div>
+      </a>
+      <a class="choose" href="../like/index.php">
+        <div class="icon">
+          <i class="fa-solid fa-heart"></i>
+          <span>Yêu thích 0</span>
+        </div>
+      </a>
+      <div class="icon">
+        <i class="fa-solid fa-user"></i>
+        <div class="dropdown">
+          <button class="account dropdown-toggle" type="none" data-bs-toggle="dropdown" aria-expanded="false">
+            Tài khoản
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../../sign_in/login/login.php">Đăng nhập</a></li>
+            <li><a class="dropdown-item" href="../../sign_in/register/register.php">Đăng ký</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#">DANH MỤC SẢN PHẨM</a></li>
+      <li><a href="#">TRANG CHỦ</a></li>
+      <li><a href="#">GIỚI THIỆU</a></li>
+      <li><a href="#">SẢN PHẨM MỚI</a></li>
+      <li><a href="#">TIN TỨC</a></li>
+      <li><a href="#">LIÊN HỆ</a></li>
+      <li><a href="#">KHUYẾN MÃI</a></li>
+      <li><a href="#">ĐẶT HÀNG</a></li>
+    </ul>
+  </nav>
 </body>
 
 </html>
