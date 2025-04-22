@@ -5,7 +5,6 @@ body {
   padding: 0;
 }
 .container {
-  width: 80%;
   margin: auto;
   background: white;
   padding: 20px;
@@ -30,6 +29,7 @@ h2 {
 .product-img {
   width: 100%;
   text-align: center;
+  border: 1px solid silver;
 }
 .product-img img {
   width: 80%;
@@ -169,38 +169,36 @@ h2 {
   justify-content: space-between;
   margin-top: 20px;
 }
-.product {
+.products .product {
   width: 24%;
+  margin-bottom: 20px;
   background: white;
-  padding: 10px;
-  border-radius: 5px;
   text-align: center;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  height: 350px;
+  margin-left: 11px;
 }
-.product img {
-  width: 100px;
-  height: auto;
+.products .product .wrap_img {
+  height: 168px;
 }
-.product .discount {
-  background: red;
-  color: white;
-  padding: 5px;
-  font-size: 12px;
-  position: absolute;
-  margin-left: -40px;
-  margin-top: -10px;
+.products .product .wrap_img img {
+  width: 200px;
+  height: 160px;
+  padding-top: 15px;
 }
-.product .price {
-  color: red;
-  font-size: 16px;
-  font-weight: bold;
+
+.products .product p {
+  height: 48px;
 }
-.product .old-price {
-  text-decoration: line-through;
-  color: gray;
-  margin-left: 5px;
+
+.products .product .wrap_buy {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
-.wrap_buy .buy {
+
+.products .product .wrap_buy .buy {
   width: 40%;
   border: none;
   border-radius: 15px;
@@ -210,11 +208,34 @@ h2 {
   color: white;
   font-weight: 600;
   cursor: pointer;
+  text-decoration: none;
+  padding-top: 2px;
 }
-.wrap_buy .buy a {
+.products .product .wrap_buy .buy a {
   color: white;
   text-decoration: none;
 }
-.wrap_buy .buy:hover {
+.products .product .buy:hover {
   background-color: green;
+}
+.discount {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+}
+.price {
+  display: block;
+  font-size: 16px;
+  color: red;
+  font-weight: bold;
+}
+.price_old {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 14px;
+  font-weight: bold;
 }

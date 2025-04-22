@@ -2,7 +2,22 @@
 include("../../connect.php");
 session_start();
 
+if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+    die("ID sản phẩm không hợp lệ.");
+}
 
+$id = (int)$_GET['id'];
+
+
+$stmt = $db->prepare("SELECT * FROM sanpham WHERE MaSP = ?");
+$stmt->execute([$id]);
+$detail = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$detail) {
+    die("Không tìm thấy sản phẩm.");
+}
+
+$arr = $db->query("SELECT * FROM sanpham WHERE MaSP < 5");
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +27,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -27,19 +42,13 @@ session_start();
                 <div class="first_content">
                     <div class="left-section">
                         <div class="product-img">
-                            <img src="../../images/daodocgiay.jpg" alt="Dao rọc giấy">
-                        </div>
-                        <div class="thumbnail-list">
-                            <img src="../../images/daodocgiay.jpg" alt="Màu vàng">
-                            <img src="../../images/daodocgiaydo.jpg" alt="Màu đỏ">
-                            <img src="../../images/daodocgiayxanh.jpg" alt="Màu xanh">
-                            <img src="../../images/daodocgiay3.jpg" alt="Màu bạc">
+                            <img src="<?php echo $detail["Hinhanh"] ?>" alt="">
                         </div>
                     </div>
                     <div class="right-section">
                         <div class="breadcrumbs"><a href="../home/index.php">Trang chủ</a> / Giỏ hàng</div>
-                        <div class="product-title">Dao rọc giấy Thiên Long - Flexoffice FO-KN02</div>
-                        <div class="price">10.000đ <span class="old-price">17.000đ</span></div>
+                        <div class="product-title"><?php echo $detail["TenSP"] ?></div>
+                        <div class="price"><?php echo number_format(($detail["Gia"] - ($detail["Gia"] * ($detail["Giamgia"] / 100))), 0) ?>.000đ<span class="old-price"><?php echo $detail["Gia"] ?>.000đ</span></div>
                         <div class="quantity">
                             <div class="quantity-control">
                                 <button>-</button>
@@ -47,16 +56,12 @@ session_start();
                                 <button>+</button>
                             </div>
                             <div class="wrap_buy">
-                                <button type="submit" class="buy" name="buy">Mua ngay</button>
-                                <button class="buy"><a href="../detail/index.php">Chi tiết</a></button>
+                                <button type="submit" class="buy" name="buy"><i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-
-            <!-- 2 -->
             <div class="container">
                 <p class="d-inline-flex gap-1">
                     <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Mô tả</a>
@@ -68,38 +73,8 @@ session_start();
                             <div class="card card-body">
                                 <div class="product-details">
                                     <table class="product-table">
-                                        <tr>
-                                            <td>Thương hiệu</td>
-                                            <td>FlexOffice</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kích thước</td>
-                                            <td>dài 159mm x rộng 18mm x dày 0.4mm</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Chất liệu</td>
-                                            <td>Thân bọc nhựa, Lưỡi bằng thép không rỉ</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Quy cách</td>
-                                            <td>1 cây dao/hộp nhỏ; 12 hộp nhỏ/inner; 480 cây/thùng</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Màu sắc</td>
-                                            <td>Xanh, vàng, đỏ</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bảo quản</td>
-                                            <td>Nơi khô ráo, tránh lửa</td>
-                                        </tr>
+                                        <?php echo $detail["Mota"] ?>
                                     </table>
-
-                                    <div class="highlight-title">Tính năng nổi bật:</div>
-                                    <ul class="highlight-list">
-                                        <li>Sản phẩm được thiết kế thon gọn, có ngấn và răng trên cán dao, tạo cảm giác vừa thoải mái vừa chắc chắn và thuận tiện khi sử dụng.</li>
-                                        <li>Chuỗi dao có rãnh để bẻ các đoạn lưỡi dao khi cần thiết.</li>
-                                        <li>Khóa dao giữ lưỡi dao cố định, an toàn khi sử dụng.</li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -117,50 +92,28 @@ session_start();
                         </div>
                     </div>
                 </div>
-                    <!-- 3 -->
-                <div class="container">
+                <div class="container" style="width: 100%;">
                     <h2>Sản phẩm liên quan</h2>
                     <div class="products">
-                        <div class="product">
-                            <span class="discount">31%</span>
-                            <img src="../../images/maytinh.jpg" alt="Máy tính">
-                            <p>Máy tính Flexoffice</p>
-                            <p class="price">382.000đ <span class="old-price">550.000đ</span></p>
-                            <div class="wrap_buy">
-                                <button type="submit" class="buy" name="buy">Mua ngay</button>
-                                <button class="buy"><a href="../detail/index.php">Chi tiết</a></button>
-                            </div>
-                        </div>
-                        <div class="product">
-                            <span class="discount">40%</span>
-                            <img src="../../images/daodocgiay2.jpg" alt="Dao rọc giấy">
-                            <p>Dao rọc giấy Flexoffice</p>
-                            <p class="price">12.000đ <span class="old-price">20.000đ</span></p>
-                            <div class="wrap_buy">
-                                <button type="submit" class="buy" name="buy">Mua ngay</button>
-                                <button class="buy"><a href="../detail/index.php">Chi tiết</a></button>
-                            </div>
-                        </div>
-                        <div class="product">
-                            <span class="discount">33%</span>
-                            <img src="../../images/kimbam1.jpg" alt="Bấm kim">
-                            <p>Bấm kim số 10</p>
-                            <p class="price">30.000đ <span class="old-price">45.000đ</span></p>
-                            <div class="wrap_buy">
-                                <button type="submit" class="buy" name="buy">Mua ngay</button>
-                                <button class="buy"><a href="../detail/index.php">Chi tiết</a></button>
-                            </div>
-                        </div>
-                        <div class="product">
-                            <span class="discount">24%</span>
-                            <img src="../../images/kimbam2.jpg" alt="Bấm kim đại">
-                            <p>Bấm kim đại Flexoffice</p>
-                            <p class="price">380.000đ <span class="old-price">500.000đ</span></p>
-                            <div class="wrap_buy">
-                                <button type="submit" class="buy" name="buy">Mua ngay</button>
-                                <button class="buy"><a href="../detail/index.php">Chi tiết</a></button>
-                            </div>
-                        </div>
+                        <?php
+                        foreach ($arr as $value) {
+                        ?>
+                            <form action="" method="post" class="product">
+                                <span class="discount"><?php echo $value["Giamgia"] ?>%</span>
+                                <div class="wrap_img">
+                                    <img src="<?php echo $value["Hinhanh"] ?>" name="image" alt="<?= $value['TenSP'] ?>">
+                                </div>
+                                <p name="name"><?php echo $value["TenSP"] ?></p>
+                                <span class="price new" name="price"><?php echo number_format(($value["Gia"] - ($value["Gia"] * ($value["Giamgia"] / 100))), 0) ?>.000đ</span>
+                                <span class="price_old"><?php echo $value["Gia"] ?>.000đ</span>
+                                <div class="wrap_buy">
+                                    <button class="buy" name="save" >Mua ngay</button>
+                                    <button class="buy"><a href="../detail/index.php?id=<?= $value['MaSP'] ?>">Chi tiết</a></button>
+                                </div>
+                            </form>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>

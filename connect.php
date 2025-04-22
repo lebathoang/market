@@ -11,8 +11,8 @@ try {
     die();
 }
 
-$account = $conn->query("select * from account");
-$products = $conn->query("select * from products");
+$khachhang = $db->query("select * from khachhang");
+$sanpham = $db->query("select * from sanpham");
 
 
 
@@ -29,25 +29,25 @@ function getDatabaseConnection()
     }
 }
 
-// function getAccount()
-// {
-//     $conn = getDatabaseConnection();
+function getAccount()
+{
+    $conn = getDatabaseConnection();
 
-//     $account = $conn->query("select * from account");
+    $account = $conn->query("select * from taikhoan");
 
-//     if ($account->rowCount() > 0) {
-//         return $account;
-//     } else {
-//         echo "Không có dữ liệu";
-//     }
-// }
+    if ($account->rowCount() > 0) {
+        return $account;
+    } else {
+        echo "Không có dữ liệu";
+    }
+}
 
 function getProducts()
 {
 
     $conn = getDatabaseConnection();
 
-    $products = $conn->query("select * from products");
+    $products = $conn->query("select * from sanpham ORDER BY MaSP DESC");
 
     if ($products->rowCount() > 0) {
         return $products;

@@ -27,30 +27,41 @@
 .content .content_products .products {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   flex-wrap: wrap;
   margin-bottom: 15px;
 }
 .content .content_products .products .product {
   width: 24%;
+  margin-bottom: 20px;
   background: white;
   text-align: center;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
   position: relative;
-  height: 265px;
+  height: 285px;
+  margin-left: 11px;
 }
-.content .content_products .products .product img {
-  width: 100px;
-  height: auto;
+.content .content_products .products .product .wrap_img {
+  height: 120px;
+}
+.content .content_products .products .product .wrap_img img {
+  width: 145px;
+  height: 100px;
+  padding-top: 15px;
 }
 
 .content .content_products .products .product p {
   height: 48px;
 }
 
-.content .content_products .products .product .buy {
-  width: 75%;
-  margin: auto;
+.content .content_products .products .product .wrap_buy {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.content .content_products .products .product .wrap_buy .buy {
+  width: 40%;
   border: none;
   border-radius: 15px;
   background-color: rgb(0, 158, 0);
@@ -59,6 +70,10 @@
   color: white;
   font-weight: 600;
   cursor: pointer;
+}
+.content .content_products .products .product .wrap_buy .buy a {
+  color: white;
+  text-decoration: none;
 }
 .content .content_products .products .product .buy:hover {
   background-color: green;
@@ -82,65 +97,4 @@
   text-decoration: line-through;
   color: #999;
   font-size: 14px;
-}
-
-/*  */
-
-h2 {
-  color: #333;
-}
-.main-content {
-  display: flex;
-  justify-content: space-between;
-}
-.main-content .featured {
-  width: 50%;
-}
-.main-content .featured img {
-  width: 100%;
-  padding: 10px 0;
-}
-.main-content .featured .description {
-  padding: 10px;
-}
-.main-content .sidebar {
-  width: 48%;
-  background: #fff;
-}
-.main-content .sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-.main-content .sidebar ul li {
-  display: flex;
-  align-items: center;
-  padding: 10px 0;
-}
-.main-content .sidebar ul li img {
-  width: 25%;
-  padding-right: 10px;
-}
-.main-content .sidebar ul li .decrip a {
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  color: #333;
-}
-.main-content .sidebar ul li .decrip a:hover {
-  color: blue;
-}
-.main-content .sidebar ul li .decrip .articles {
-  color: #777;
-  font-size: 13px;
-  margin-top: 20px;
-}
-.brands {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-.brands img {
-  margin: 10px;
-  height: 40px;
 }

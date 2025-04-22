@@ -1,5 +1,6 @@
 <?php
-include("../../connect.php")
+require("../../connect.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +10,7 @@ include("../../connect.php")
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evo Office</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
@@ -36,7 +37,7 @@ include("../../connect.php")
                     </ul>
                 </section>
                 <section class="banner">
-                    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+                    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img src="../../images/sale_7.jpg" class="d-block w-100" alt="...">
@@ -92,15 +93,18 @@ include("../../connect.php")
                         <?php
                         foreach (getProducts() as $value) {
                         ?>
-                            <form action="./add_to_cart.php" method="post" class="product">
-                                <span class="discount">31%</span>
-                                <img src="../../images/maytinh.jpg" name="image" alt="Máy tính Flexoffice CAL-015">
-                                <p name="name"><?php echo $value["name"] ?></p>
-                                <span class="price new" name="price"><?php echo $value["price"] ?>.000đ</span>
-                                <span class="price old"><?php echo $value["price"] ?>.000đ</span>
+                            <form action="./add_to_cart.php" method="POST" class="product">
+                                <span class="discount"><?php echo $value["Giamgia"] ?>%</span>
+                                <div class="wrap_img">
+                                    <img src="<?php echo $value["Hinhanh"] ?>" name="image" alt="<?= $value['TenSP'] ?>">
+                                </div>
+                                <p name="name"><?php echo $value["TenSP"] ?></p>
+                                <span class="price new" name="price"><?php echo number_format(($value["Gia"] - ($value["Gia"] * ($value["Giamgia"] / 100))), 0) ?>.000đ</span>
+                                <span class="price old"><?php echo $value["Gia"] ?>.000đ</span>
                                 <div class="wrap_buy">
-                                    <button type="submit" class="buy" name="buy">Mua ngay</button>
-                                    <button class="buy"><a href="../detail/index.php">Chi tiết</a></button>
+                                    <input type="hidden" name="MaSP" value="<?= $value['MaSP'] ?>">
+                                    <button class="buy" type="submit">Mua ngay</button>
+                                    <button class="buy"><a href="../detail/index.php?id=<?= $value['MaSP'] ?>">Chi tiết</a></button>
                                 </div>
                             </form>
                         <?php
@@ -109,7 +113,7 @@ include("../../connect.php")
                     </section>
                 </div>
                 <div>
-                    <h2>TƯ VẤN SẢN PHẨM</h2>
+                    <h2 style="margin-top: 25px;">TƯ VẤN SẢN PHẨM</h2>
                     <div class="main-content">
                         <div class="featured">
                             <img src="../../images/chi-thoi-gian-co-the-cat-loi.jpg" alt="Review sách">

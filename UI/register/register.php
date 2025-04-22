@@ -35,23 +35,23 @@
                         <button class="active">Đăng ký</button>
 
                     </div>
-                    <form>
+                    <form method="post" action="./handle_register.php">
                         <label for="first-name">Họ*</label>
-                        <input type="text" id="first-name" placeholder="Nhập Họ" required>
+                        <input type="text" name="Ho" placeholder="Nhập Họ" required>
 
                         <label for="last-name">Tên*</label>
-                        <input type="text" id="last-name" placeholder="Nhập Tên" required>
+                        <input type="text" name="Ten" placeholder="Nhập Tên" required>
 
                         <label for="phone">Số điện thoại*</label>
-                        <input type="tel" id="phone" placeholder="Nhập Số điện thoại" required>
+                        <input type="tel" name="Sdt" placeholder="Nhập Số điện thoại" required>
 
                         <label for="email">Email*</label>
-                        <input type="email" id="email" placeholder="Nhập Địa chỉ Email" required>
+                        <input type="text" name="Email" placeholder="Nhập Địa chỉ Email" required>
 
                         <label for="password">Mật khẩu*</label>
-                        <input type="password" id="password" placeholder="Nhập Mật khẩu" required>
+                        <input type="password" name="Matkhau" placeholder="Nhập Mật khẩu" required>
 
-                        <button type="submit" class="submit-btn">Tạo Tài Khoản</button>
+                        <button type="submit" class="submit-btn" name="register">Tạo Tài Khoản</button>
                     </form>
                     <div class="social-login">
                         <p>hoặc đăng nhập qua</p>

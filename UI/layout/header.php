@@ -1,3 +1,23 @@
+<?php
+require_once("../../connect.php");
+
+$db = getDatabaseConnection();
+
+$cart = $db->query("select COUNT(*) AS total from giohang");
+$row = $cart->fetch(PDO::FETCH_ASSOC);
+
+// $tempt = $db->query("select * from temp");
+// $account = $db->query("select Ho, Ten from khachhang");
+// echo "<pre>";
+// print_r ($account);
+// print_r ($tempt);
+// echo "</pre>";
+
+// $arr_tempt = $tempt->fetch(PDO::FETCH_ASSOC);
+// $arr_account = $account->fetch(PDO::FETCH_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +25,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="./header.css">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 
 <style>
@@ -41,6 +61,12 @@
     color: white;
     width: 70px;
     cursor: pointer;
+  }
+
+  .search-bar .wrap_search {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
   }
 
   .header-icons {
@@ -110,7 +136,7 @@
       </a>
     </div>
     <div class="search-bar">
-      <form action="../search/index.php" method="post">
+      <form class="wrap_search" action="../search/index.php" method="post">
         <input type="text" placeholder="Tìm kiếm...." name="keyword">
         <input type="submit" class="search" name="tim_kiem" value="Search"></input>
       </form>
@@ -119,7 +145,7 @@
       <a class="choose" href="../cart/index.php">
         <div class="icon">
           <i class="fa-solid fa-cart-plus"></i>
-          <span>Giỏ hàng 0</span>
+          <span>Giỏ hàng <?php echo $row['total'] ?></span>
         </div>
       </a>
       <a class="choose" href="../like/index.php">
@@ -135,8 +161,8 @@
             Tài khoản
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../../sign_in/login/login.php">Đăng nhập</a></li>
-            <li><a class="dropdown-item" href="../../sign_in/register/register.php">Đăng ký</a></li>
+            <li><a class="dropdown-item" href="../login/login.php">Đăng nhập</a></li>
+            <li><a class="dropdown-item" href="../register/register.php">Đăng ký</a></li>
           </ul>
         </div>
       </div>
@@ -145,7 +171,7 @@
   <nav>
     <ul>
       <li><a href="#">DANH MỤC SẢN PHẨM</a></li>
-      <li><a href="#">TRANG CHỦ</a></li>
+      <li><a href="../home/index.php">TRANG CHỦ</a></li>
       <li><a href="#">GIỚI THIỆU</a></li>
       <li><a href="#">SẢN PHẨM MỚI</a></li>
       <li><a href="#">TIN TỨC</a></li>

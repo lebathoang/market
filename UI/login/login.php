@@ -7,7 +7,6 @@
     <title>Login</title>
     <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
@@ -34,16 +33,16 @@
                         <button><a href="../register/register.php">Đăng ký</a></button>
 
                     </div>
-                    <form>
-                        <label for="email">EMAIL*</label>
-                        <input type="email" id="email" placeholder="Nhập Địa chỉ Email">
+                    <form method="post" action="./handle_login.php">
+                        <label for="email">Tên đăng nhập*</label>
+                        <input type="text" name="tendangnhap" placeholder="Tên đăng nhập">
 
-                        <label for="password">MẬT KHẨU*</label>
-                        <input type="password" id="password" placeholder="Nhập Mật khẩu">
+                        <label for="password" style="margin-top: 9px">Mật khẩu*</label>
+                        <input type="password" name="matkhau" placeholder="Mật khẩu">
 
-                        <a href="#" class="forgot-password">Quên mật khẩu?</a>
+                        <a href="../register/register.php" class="forgot-password">Quên mật khẩu?</a>
 
-                        <button type="submit" class="login-btn">ĐĂNG NHẬP</button>
+                        <button type="submit" class="login-btn" name="login">ĐĂNG NHẬP</button>
                     </form>
                     <p class="security-note">Evo Office cam kết bảo mật và sẽ không bao giờ chia sẻ thông tin của bạn.</p>
                     <div class="social-login">
