@@ -13,8 +13,9 @@
 try {
     if (class_exists("PDO")) {
         // Nếu có biến môi trường CLEARDB_DATABASE_URL (Heroku)
-        if (getenv("CLEARDB_DATABASE_URL")) {
-            $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+        if (getenv("JAWSDB_URL")) {
+            // Lấy thông tin DB từ biến môi trường Heroku
+            $url = parse_url(getenv("JAWSDB_URL"));
 
             $server   = $url["host"];
             $username = $url["user"];
