@@ -17,7 +17,8 @@ if (!$detail) {
     die("Không tìm thấy sản phẩm.");
 }
 
-$arr = $db->query("SELECT * FROM sanpham WHERE MaSP < 5");
+$arr = $db->query("SELECT * FROM sanpham WHERE Danhmuc = 'sách'");
+
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +28,7 @@ $arr = $db->query("SELECT * FROM sanpham WHERE MaSP < 5");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -45,27 +46,24 @@ $arr = $db->query("SELECT * FROM sanpham WHERE MaSP < 5");
                             <img src="<?php echo $detail["Hinhanh"] ?>" alt="">
                         </div>
                     </div>
-                    <div class="right-section">
+                    <form action="../home/add_to_cart.php" method="POST" class="right-section">
                         <div class="breadcrumbs"><a href="../home/index.php">Trang chủ</a> / Giỏ hàng</div>
                         <div class="product-title"><?php echo $detail["TenSP"] ?></div>
-                        <div class="price"><?php echo number_format(($detail["Gia"] - ($detail["Gia"] * ($detail["Giamgia"] / 100))), 0) ?>.000đ<span class="old-price"><?php echo $detail["Gia"] ?>.000đ</span></div>
+                        <div class="price"><?php echo number_format(($detail["Gia"] - ($detail["Gia"] * ($detail["Giamgia"] / 100))), 0, '.', '.') ?>đ<span class="old-price"><?php echo number_format($detail["Gia"]) ?>đ</span></div>
                         <div class="quantity">
-                            <div class="quantity-control">
-                                <button>-</button>
-                                <input type="text" value="1">
-                                <button>+</button>
-                            </div>
+                            <span style="font-weight: 600;">Xuất Xứ: <?php echo $detail["Xuatxu"] ?></span>
                             <div class="wrap_buy">
+                                <input type="hidden" name="MaSP" value="<?= $detail['MaSP'] ?>">
                                 <button type="submit" class="buy" name="buy"><i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <div class="container">
                 <p class="d-inline-flex gap-1">
                     <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Mô tả</a>
-                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Giới thiệu</button>
+                    <!-- <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Giới thiệu</button> -->
                 </p>
                 <div class="row">
                     <div class="col">
@@ -79,7 +77,7 @@ $arr = $db->query("SELECT * FROM sanpham WHERE MaSP < 5");
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <!-- <div class="col">
                         <div class="collapse multi-collapse" id="multiCollapseExample2">
                             <div class="card card-body">
                                 <div class="about-section">
@@ -90,7 +88,7 @@ $arr = $db->query("SELECT * FROM sanpham WHERE MaSP < 5");
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="container" style="width: 100%;">
                     <h2>Sản phẩm liên quan</h2>
@@ -104,10 +102,10 @@ $arr = $db->query("SELECT * FROM sanpham WHERE MaSP < 5");
                                     <img src="<?php echo $value["Hinhanh"] ?>" name="image" alt="<?= $value['TenSP'] ?>">
                                 </div>
                                 <p name="name"><?php echo $value["TenSP"] ?></p>
-                                <span class="price new" name="price"><?php echo number_format(($value["Gia"] - ($value["Gia"] * ($value["Giamgia"] / 100))), 0) ?>.000đ</span>
-                                <span class="price_old"><?php echo $value["Gia"] ?>.000đ</span>
+                                <span class="price new" name="price"><?php echo number_format(($value["Gia"] - ($value["Gia"] * ($value["Giamgia"] / 100))), 0, '.', '.') ?>đ</span>
+                                <span class="price_old"><?php echo number_format($value["Gia"]) ?>đ</span>
                                 <div class="wrap_buy">
-                                    <button class="buy" name="save" >Mua ngay</button>
+                                    <button class="buy" name="save">Mua ngay</button>
                                     <button class="buy"><a href="../detail/index.php?id=<?= $value['MaSP'] ?>">Chi tiết</a></button>
                                 </div>
                             </form>

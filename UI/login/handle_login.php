@@ -37,7 +37,7 @@ if (isset($_POST['login'])) {
     // }
 
     if ($name == "lebathoang" && $password == "11771177" || $name == "letrianh" && $password == "12345678" || $name == "phamthanhhien" && $password == "98765432") {
-        header("Location: ../../admin/Admin/admin.php");
+        header("Location: ../../management/admin/index.php");
     } else {
         header("Location: ../../UI/home/index.php");
     }

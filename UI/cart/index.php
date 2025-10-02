@@ -13,7 +13,7 @@ $array_cart = $db->query("select * from giohang");
 
 $sum = 0;
 foreach ($products as $value) {
-    $sum += number_format(($value["Gia"] - ($value["Gia"] * ($value["Giamgia"] / 100))), 0) * $value["quantity"];
+    $sum += sprintf("%.3f", (($value["Gia"] - ($value["Gia"] * ($value["Giamgia"] / 100))) * $value["quantity"]));
 }
 
 ?>
@@ -37,7 +37,7 @@ foreach ($products as $value) {
         include("../layout/header.php")
         ?>
 
-        <?php if (empty($products)): ?>
+        <?php if (empty($array_cart)): ?>
             <div class="container">
                 <div class="breadcrumbs"><a href="../home/index.php">Trang chủ</a> / Giỏ hàng</div>
                 <div class="cart-container">
@@ -86,7 +86,7 @@ foreach ($products as $value) {
                                         <span>Xuất Xứ: <?php echo $value["Xuatxu"] ?></span>
                                         <button class="delete" onclick="deleteCartItem(<?= $value['MaSP'] ?>)">Xóa</button>
                                     </div>
-                                    <div class="cart-price"><?php echo number_format(($value["Gia"] - ($value["Gia"] * ($value["Giamgia"] / 100))), 0, ',', '.') * $value["quantity"] ?>.000đ</div>
+                                    <div class="cart-price"><?php echo number_format(($value["Gia"] - ($value["Gia"] * ($value["Giamgia"] / 100))), 0, '.', '.') * $value["quantity"] ?>đ</div>
                                     <div class="quantity-control">
                                         <button class="btn" onclick="updateQuantity(<?= $value['MaSP'] ?>, 'decrease')">–</button>
                                         <span id="qty-<?= $value['MaSP'] ?>"><?= $value['quantity'] ?></span>
@@ -96,7 +96,7 @@ foreach ($products as $value) {
                             <?php } ?>
                         </div>
                         <div class="cart-summary">
-                            <p><strong><?php echo "Thành tiền: " . number_format($sum, 0, ',', '.') ?>.000đ</strong></p>
+                            <p><strong><?php echo "Thành tiền: " . number_format($sum, 0, '.', '.') ?>đ</strong></p>
                             <button class="btn-checkout">Thanh Toán Ngay</button>
                             <button class="btn-checkout"><a class="btn-checkout" href="../home/index.php">Tiếp Tục Mua</a></button>
                         </div>

@@ -54,12 +54,12 @@ $db = null;
                                 </div>
                                 <input type="hidden" name="name" value="<?= $value['TenSP'] ?>" />
                                 <p name="name"><?php echo $value["TenSP"] ?></p>
-                                <span class="price new" name="price"><?php echo number_format(($value["Gia"] - ($value["Gia"] * ($value["Giamgia"] / 100))), 0) ?>.000đ</span>
-                                <span class="price old"><?php echo $value["Gia"] ?>.000đ</span>
+                                <span class="price new" name="price"><?php echo number_format(($value["Gia"] - ($value["Gia"] * ($value["Giamgia"] / 100))), 0, '.', '.') ?>đ</span>
+                                <span class="price old"><?php echo number_format($value["Gia"]), '.'?>đ</span>
                                 <div class="wrap_buy">
-                                    <input type="hidden" class="buy" name="id" value="<?= $value['id'] ?>" />
-                                    <a class="buy" name="save" href="../cart/index.php?id=<?php echo $value['id'] ?>"><i class="fa-solid fa-cart-plus"></i></a>
-                                    <button class="buy"><a href="../detail/index.php">Chi tiết</a></button>
+                                    <input type="hidden" class="buy" name="id" value="<?= $value['MaSP'] ?>" />
+                                    <a style="text-decoration: none;padding-top: 3px;" class="buy" name="save" href="../cart/index.php?id=<?php echo $value['MaSP'] ?>">Mua ngay</a>
+                                    <button class="buy"><a href="../detail/index.php?id=<?= $value['MaSP'] ?>">Chi tiết</a></button>
                                 </div>
                             </form>
                         <?php

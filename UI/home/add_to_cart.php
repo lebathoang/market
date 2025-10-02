@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['MaSP'])) {
             $sp['Xuatxu'],
         ]);
 
-        echo "<script>window.location.href='index.php';</script>";
+        echo "<script>window.location.href='../cart/index.php';</script>";
     } else {
         echo "Không tìm thấy sản phẩm.";
     }

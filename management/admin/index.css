@@ -1,0 +1,157 @@
+:root {
+  --primary-color: #4e73df;
+  --secondary-color: #1cc88a;
+  --danger-color: #e74a3b;
+  --warning-color: #f6c23e;
+  --info-color: #36b9cc;
+}
+
+.sidebar {
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--primary-color) 10%, #224abe 100%);
+  color: #fff;
+  transition: all 0.3s;
+}
+
+.sidebar .nav-link {
+  color: rgba(255, 255, 255, 0.8);
+  padding: 1rem;
+  font-weight: 500;
+}
+
+.sidebar .nav-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .nav-link.active {
+  color: #fff;
+  font-weight: 700;
+}
+
+.sidebar .sidebar-brand {
+  height: 4.375rem;
+  padding: 1.5rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+}
+
+.sidebar-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin: 1rem 0;
+}
+
+.page-content {
+  flex: 1;
+}
+
+.card-stats {
+  border-left: 4px solid;
+}
+
+.card-stats.primary {
+  border-left-color: var(--primary-color);
+}
+
+.card-stats.success {
+  border-left-color: var(--secondary-color);
+}
+
+.card-stats.warning {
+  border-left-color: var(--warning-color);
+}
+
+.card-stats.danger {
+  border-left-color: var(--danger-color);
+}
+
+.dashboard-title {
+  font-weight: 700;
+  color: #5a5c69;
+}
+
+.dashboard-subtitle {
+  font-size: 1.1rem;
+  color: #6e707e;
+}
+
+.topbar {
+  height: 4.375rem;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+
+.content-wrapper {
+  min-height: calc(100vh - 4.375rem);
+  padding: 1.5rem;
+  background-color: #f8f9fc;
+}
+
+.card {
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+
+.card-header {
+  background-color: #f8f9fc;
+  border-bottom: 1px solid #e3e6f0;
+}
+
+.modal-content {
+  border: none;
+  border-radius: 0.35rem;
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.text-success {
+  color: var(--secondary-color) !important;
+}
+
+.text-warning {
+  color: var(--warning-color) !important;
+}
+
+.text-danger {
+  color: var(--danger-color) !important;
+}
+
+.form-control:focus {
+  border-color: #4e73df;
+  box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
+}
+
+.custom-tab {
+  border: none;
+  background-color: transparent;
+  color: #6e707e;
+  font-weight: 600;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.custom-tab.active {
+  color: var(--primary-color);
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.custom-tab:hover:not(.active) {
+  color: #4e73df;
+  background-color: rgba(78, 115, 223, 0.05);
+}
+
+.tab-content > .tab-pane {
+  display: none;
+}
+
+.tab-content > .active {
+  display: block;
+}
+
+.action-buttons .btn {
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.25rem;
+}

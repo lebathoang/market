@@ -1,0 +1,12 @@
+# Composer vendor
+/vendor/
+
+# Node modules (nếu có)
+node_modules/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env

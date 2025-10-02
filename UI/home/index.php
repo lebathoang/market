@@ -99,8 +99,8 @@ require("../../connect.php");
                                     <img src="<?php echo $value["Hinhanh"] ?>" name="image" alt="<?= $value['TenSP'] ?>">
                                 </div>
                                 <p name="name"><?php echo $value["TenSP"] ?></p>
-                                <span class="price new" name="price"><?php echo number_format(($value["Gia"] - ($value["Gia"] * ($value["Giamgia"] / 100))), 0) ?>.000đ</span>
-                                <span class="price old"><?php echo $value["Gia"] ?>.000đ</span>
+                                <span class="price new" name="price"><?php echo number_format(($value["Gia"] - ($value["Gia"] * ($value["Giamgia"] / 100))), 0, '.', '.') ?>đ</span>
+                                <span class="price old"><?php echo number_format($value["Gia"]) ?>đ</span>
                                 <div class="wrap_buy">
                                     <input type="hidden" name="MaSP" value="<?= $value['MaSP'] ?>">
                                     <button class="buy" type="submit">Mua ngay</button>

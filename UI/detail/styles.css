@@ -198,7 +198,7 @@ h2 {
   align-items: center;
 }
 
-.products .product .wrap_buy .buy {
+.wrap_buy .buy {
   width: 40%;
   border: none;
   border-radius: 15px;
@@ -211,11 +211,11 @@ h2 {
   text-decoration: none;
   padding-top: 2px;
 }
-.products .product .wrap_buy .buy a {
+.wrap_buy .buy a {
   color: white;
   text-decoration: none;
 }
-.products .product .buy:hover {
+.wrap_buy .buy:hover {
   background-color: green;
 }
 .discount {
