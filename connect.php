@@ -1,15 +1,4 @@
 <?php
-
-// try {
-//     if (class_exists("PDO")) {
-//         $db = new PDO("mysql:host=localhost; dbname=database", "root", "");
-//         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//         return $db;
-//     }
-// } catch (Exception $e) {
-//     echo "Error " . $e->getMessage();
-//     die();
-// }
 try {
     if (class_exists("PDO")) {
         // Nếu có biến môi trường CLEARDB_DATABASE_URL (Heroku)
