@@ -1,7 +1,7 @@
 <?php
 session_start();
 
- require_once $_SERVER['DOCUMENT_ROOT'] . '/connect.php';
+require_once dirname(__DIR__, 2) . '/connect.php';
 
 if (!isset($_GET["MaSP"])) {
     $_SESSION["err"] = "Ban chua chon du lieu sua";

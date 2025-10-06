@@ -1,5 +1,5 @@
 <?php
- require_once $_SERVER['DOCUMENT_ROOT'] . '/connect.php';
+require_once dirname(__DIR__, 2) . '/connect.php';
 
 $limit = 5; // Số sản phẩm mỗi trang
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;

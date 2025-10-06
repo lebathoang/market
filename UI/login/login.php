@@ -54,7 +54,7 @@
             </div>
         </div>
         <?php
-        include("../../UI/layout/footer.php")
+        include __DIR__ . "../../UI/layout/footer.php"
         ?>
     </div>
 
