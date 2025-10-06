@@ -1,9 +1,6 @@
 <?php
     try {
         if (class_exists("PDO")) {
-            if (!getenv("JAWSDB_URL") && isset($_ENV["JAWSDB_URL"])) {
-                putenv("JAWSDB_URL=" . $_ENV["JAWSDB_URL"]);
-            }
             if (getenv("JAWSDB_URL")) {
                 $url = parse_url(getenv("JAWSDB_URL"));
 
@@ -20,13 +17,9 @@
                 $db = new PDO($dsn, "root", "");
             }
 
-            
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $db;
         }
-        echo "<pre>";
-        echo "JAWSDB_URL: " . getenv("JAWSDB_URL") . "\n";
-        echo "</pre>";
     } catch (Exception $e) {
         echo "Error " . $e->getMessage();
         die();
