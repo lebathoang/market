@@ -1,20 +1,13 @@
 <?php
-// Hiển thị toàn bộ lỗi PHP (Heroku tắt sẵn nên phải bật lại)
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-// 👉 Nếu connect.php ở thư mục khác, sửa đường dẫn cho đúng
-require_once __DIR__ . '/connect.php';
-
 try {
-    $db = getDatabaseConnection();
-    echo "✅ Connected successfully!";
+    $dsn = "mysql:host=hngomrlb3vfq3jcr.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;port=3306;dbname=nhhp2szpexy3a3im;charset=utf8;protocol=TCP";
+    $username = "cjsufgx45hbkxysk";
+    $password = "c6vwqftfim4rg9h2";
+
+    $pdo = new PDO($dsn, $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    echo "✅ Connected successfully to JawsDB!";
 } catch (PDOException $e) {
-    echo "❌ Database error: " . $e->getMessage();
-    echo $dsn;
-} catch (Throwable $t) {
-    echo "❌ General error: " . $t->getMessage();
-    echo $dsn;
+    echo "❌ Connection failed: " . $e->getMessage();
 }
-?>
