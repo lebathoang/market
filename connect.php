@@ -1,20 +1,19 @@
 <?php
 try {
     if (class_exists("PDO")) {
-        // Nếu có biến môi trường CLEARDB_DATABASE_URL (Heroku)
-        if (getenv("JAWSDB_URL")) {
-            // Lấy thông tin DB từ biến môi trường Heroku
-            $url = parse_url(getenv("JAWSDB_URL"));
 
+        if (getenv("JAWSDB_URL")) {
+            // 🔹 Nếu đang chạy trên Heroku
+            $url = parse_url(getenv("JAWSDB_URL"));
             $server   = $url["host"];
             $username = $url["user"];
             $password = $url["pass"];
-            $database = substr($url["path"], 1);
+            $database = ltrim($url["path"], '/');
 
-            $dsn = "mysql:host={$server};dbname={$database};charset=utf8";
+            $dsn = "mysql:host={$server};port=3306;dbname={$database};charset=utf8";
             $db = new PDO($dsn, $username, $password);
         } else {
-            // Chạy local (XAMPP)
+            // 🔹 Nếu chạy local (XAMPP)
             $dsn = "mysql:host=localhost;dbname=database;charset=utf8";
             $db = new PDO($dsn, "root", "");
         }
@@ -23,7 +22,7 @@ try {
         return $db;
     }
 } catch (Exception $e) {
-    echo "Error " . $e->getMessage();
+    echo "Error: " . $e->getMessage();
     die();
 }
 
