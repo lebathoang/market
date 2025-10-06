@@ -93,6 +93,7 @@
 </style>
 
 <body>
+  <?php $basePath = '/PHP/code_market'; ?>
   <div class="footer">
     <a class="facebook" href="#"><i class="fa-brands fa-facebook"></i> Facebook</a>
     <a class="twitter" href="#"><i class="fa-brands fa-twitter"></i> Twitter</a>
@@ -125,7 +126,7 @@
       </ul>
     </div>
     <div class="footer-section logo">
-      <img src="../../images/logo.png" alt="Evo Office">
+      <img src="<?= $basePath ?>/images/logo.png" alt="Evo Office">
       <div class="contact-info">
         <p><strong>Địa chỉ:</strong> Km 3 + 350 Đường Phan Trọng Tuệ ,Thanh Trì, TP.Hà Nội</p>
         <p><strong>Email:</strong> evooffice@gmail.com</p>
@@ -134,10 +135,10 @@
       </div>
     </div>
     <div class="footer-section customer-support">
-      <img src="../../images/icon_1.svg" alt="Hỗ trợ khách hàng">
+      <img src="<?= $basePath ?>/images/icon_1.svg" alt="Hỗ trợ khách hàng">
       <p><strong>Hỗ trợ khách hàng</strong></p>
       <p>Hỗ trợ 24/7</p>
-      <img src="../../images/icon_2.svg" alt="Giao hàng miễn phí">
+      <img src="<?= $basePath ?>/images/icon_2.svg" alt="Giao hàng miễn phí">
       <p><strong>Giao hàng miễn phí</strong></p>
       <p>Tất cả đơn hàng trên 200K</p>
     </div>

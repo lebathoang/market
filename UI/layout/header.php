@@ -1,5 +1,5 @@
 <?php
-require_once("../../connect.php");
+require_once __DIR__ . "../../../connect.php";
 
 $db = getDatabaseConnection();
 
@@ -129,10 +129,11 @@ $row = $cart->fetch(PDO::FETCH_ASSOC);
 </style>
 
 <body>
+  <?php $basePath = '/PHP/code_market'; ?>
   <header>
     <div class="logo">
       <a href="../home/index.php">
-        <img src="../../images/logo.png" alt="Evo Office">
+        <img src="<?= $basePath ?>/images/logo.png" alt="Evo Office">
       </a>
     </div>
     <div class="search-bar">
@@ -142,7 +143,7 @@ $row = $cart->fetch(PDO::FETCH_ASSOC);
       </form>
     </div>
     <div class="header-icons">
-      <a class="choose" href="../cart/index.php">
+      <a class="choose" href="<?= $basePath ?>/UI/cart/index.php">
         <div class="icon">
           <i class="fa-solid fa-cart-plus"></i>
           <span>Giỏ hàng <?php echo $row['total'] ?></span>
