@@ -1,3 +1,5 @@
-<?php
-  require __DIR__ . '/UI/home/index.php';
+<<?php
+// Chuyển hướng browser đến UI/home/index.php
+header("Location: ./UI/home/index.php");
+exit();
 ?>
