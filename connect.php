@@ -1,29 +1,29 @@
 <?php
     try {
-        if (class_exists("PDO")) {
-            if (getenv("JAWSDB_URL")) {
-                $url = parse_url(getenv("JAWSDB_URL"));
+    if (class_exists("PDO")) {
+        if (getenv("JAWSDB_URL")) {
+            $url = parse_url(getenv("JAWSDB_URL"));
+            $server   = $url["host"];
+            $username = $url["user"];
+            $password = $url["pass"];
+            $database = ltrim($url["path"], '/');
+            $port     = isset($url["port"]) ? $url["port"] : 3306;
 
-                $server   = $url["host"];
-                $username = $url["user"];
-                $password = $url["pass"];
-                $database = substr($url["path"], 1);
-
-                $dsn = "mysql:host={$server};port=3306;dbname={$database};charset=utf8;protocol=TCP";
-
-                $db = new PDO($dsn, $username, $password);
-            } else {
-                $dsn = "mysql:host=localhost;dbname=database;charset=utf8";
-                $db = new PDO($dsn, "root", "");
-            }
-
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $db;
+            $dsn = "mysql:host={$server};port={$port};dbname={$database};charset=utf8";
+            $db = new PDO($dsn, $username, $password);
+        } else {
+            // Local
+            $dsn = "mysql:host=localhost;port=3306;dbname=database;charset=utf8";
+            $db = new PDO($dsn, "root", "");
         }
-    } catch (Exception $e) {
-        echo "Error " . $e->getMessage();
-        die();
+
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $db;
     }
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage();
+    die();
+}
 
 $khachhang = $db->query("select * from khachhang");
 $sanpham = $db->query("select * from sanpham");
