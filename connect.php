@@ -1,20 +1,17 @@
 <?php
 try {
     if (class_exists("PDO")) {
-
         if (getenv("JAWSDB_URL")) {
-            // 🔹 Nếu đang chạy trên Heroku
             $url = parse_url(getenv("JAWSDB_URL"));
             $server   = $url["host"];
             $username = $url["user"];
             $password = $url["pass"];
             $database = ltrim($url["path"], '/');
 
-            $dsn = "mysql:host={$server};port=3306;dbname={$database};charset=utf8";
+            $dsn = "mysql:host={$server};port=3306;dbname={$database};charset=utf8;protocol=TCP";
             $db = new PDO($dsn, $username, $password);
         } else {
-            // 🔹 Nếu chạy local (XAMPP)
-            $dsn = "mysql:host=localhost;dbname=database;charset=utf8";
+            $dsn = "mysql:host=127.0.0.1;dbname=database;charset=utf8;protocol=TCP";
             $db = new PDO($dsn, "root", "");
         }
 
@@ -25,11 +22,8 @@ try {
     echo "Error: " . $e->getMessage();
     die();
 }
-
 $khachhang = $db->query("select * from khachhang");
 $sanpham = $db->query("select * from sanpham");
-
-
 
 function getDatabaseConnection()
 {
@@ -70,3 +64,4 @@ function getProducts()
         echo "Không có dữ liệu";
     }
 }
+?>
