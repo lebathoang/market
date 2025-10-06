@@ -12,7 +12,9 @@ try {
     echo "✅ Connected successfully!";
 } catch (PDOException $e) {
     echo "❌ Database error: " . $e->getMessage();
+    echo $dsn;
 } catch (Throwable $t) {
     echo "❌ General error: " . $t->getMessage();
+    echo $dsn;
 }
 ?>
