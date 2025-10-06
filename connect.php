@@ -1,27 +1,43 @@
 <?php
 try {
-    if (class_exists("PDO")) {
-        if (getenv("JAWSDB_URL")) {
-            $url = parse_url(getenv("JAWSDB_URL"));
+        // Kiểm tra có hỗ trợ PDO không
+        if (!class_exists("PDO")) {
+            throw new Exception("PDO not supported");
+        }
+
+        // Lấy biến môi trường từ Heroku (JAWSDB_URL)
+        $dbUrl = getenv("JAWSDB_URL");
+
+        if ($dbUrl) {
+            // Nếu chạy trên Heroku → parse URL
+            $url = parse_url($dbUrl);
+
             $server   = $url["host"];
             $username = $url["user"];
             $password = $url["pass"];
             $database = ltrim($url["path"], '/');
+            $port     = $url["port"] ?? 3306; // Phòng khi thiếu port
 
-            $dsn = "mysql:host={$server};port=3306;dbname={$database};charset=utf8;protocol=TCP";
-            $db = new PDO($dsn, $username, $password);
+            // Tạo DSN kết nối tới MySQL
+            $dsn = "mysql:host={$server};port={$port};dbname={$database};charset=utf8mb4";
+
+            $pdo = new PDO($dsn, $username, $password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            return $pdo;
         } else {
-            $dsn = "mysql:host=127.0.0.1;dbname=database;charset=utf8;protocol=TCP";
-            $db = new PDO($dsn, "root", "");
+            // Nếu chạy local (XAMPP)
+            $dsn = "mysql:host=127.0.0.1;dbname=database;charset=utf8mb4";
+            $pdo = new PDO($dsn, "root", "");
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            return $pdo;
         }
 
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $db;
+    } catch (PDOException $e) {
+        die("Database connection failed: " . $e->getMessage());
     }
-} catch (Exception $e) {
-    echo "Error: " . $e->getMessage();
-    die();
-}
+    
 $khachhang = $db->query("select * from khachhang");
 $sanpham = $db->query("select * from sanpham");
 
