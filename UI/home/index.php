@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__ . '/../../connect.php';
+  require_once $_SERVER['DOCUMENT_ROOT'] . '/connect.php';
 ?>
 
 <!DOCTYPE html>

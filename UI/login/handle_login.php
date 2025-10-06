@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require("../../connect.php");
+require_once $_SERVER['DOCUMENT_ROOT'] . '/connect.php';
 
 
 if (isset($_POST['login'])) {

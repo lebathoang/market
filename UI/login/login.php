@@ -14,7 +14,7 @@
     <div class="wrap">
 
         <?php
-        include("../../UI/layout/header.php")
+        include __DIR__ . "../../UI/layout/header.php"
         ?>
         <div class="container">
             <div class="left-panel">

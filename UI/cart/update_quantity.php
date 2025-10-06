@@ -1,5 +1,5 @@
 <?php
-require '../../connect.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['MaSP'], $_POST['action'])) {
     $cart_id = (int)$_POST['MaSP'];

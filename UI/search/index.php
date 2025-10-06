@@ -1,5 +1,5 @@
 <?php
-include("../../connect.php");
+require_once $_SERVER['DOCUMENT_ROOT'] . '/connect.php';
 
 // Xu ly tim kiem khi nguoi dung gui form
 if (isset($_POST['keyword'])) {
@@ -37,7 +37,7 @@ $db = null;
 <body>
     <div class="wrap">
         <?php
-        include("../layout/header.php");
+        include __DIR__ . '../../layout/header.php';
         ?>
         <!-- Content -->
         <main>
@@ -70,7 +70,7 @@ $db = null;
         </main>
         <div>
             <?php
-            include("../layout/footer.php");
+            include __DIR__ . '../../layout/footer.php';
             ?>
         </div>
     </div>

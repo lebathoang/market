@@ -1,6 +1,6 @@
 <?php
-include("../../connect.php");
 session_start();
+require_once $_SERVER['DOCUMENT_ROOT'] . '/connect.php';
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("ID sản phẩm không hợp lệ.");

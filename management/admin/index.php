@@ -95,15 +95,15 @@
             <div class="content-wrapper">
 
                 <!-- Products Tab -->
-                <?php include("./mg_products.php") ?>
+                <?php include __DIR__ . "./mg_products.php"?>
 
                 <!-- Categories Tab -->
-                <?php include("./categories.php")?>
+                <?php include __DIR__ . "./categories.php"?>
 
                 <!-- Client Tab -->
-                <?php include("./mg_client.php")?>
+                <?php include __DIR__ . "./mg_client.php"?>
                 <!-- Reports Tab -->
-                <?php include("./report.php")?>
+                <?php include __DIR__ . "./report.php"?>
             </div>
         </div>
     </div>

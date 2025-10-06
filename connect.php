@@ -1,33 +1,36 @@
 <?php
-
     try {
-    if (class_exists("PDO")) {
-        // Nếu chạy trên Heroku có biến môi trường JAWSDB_URL
-        if (getenv("JAWSDB_URL")) {
-            $url = parse_url(getenv("JAWSDB_URL"));
+        if (class_exists("PDO")) {
+            if (!getenv("JAWSDB_URL") && isset($_ENV["JAWSDB_URL"])) {
+                putenv("JAWSDB_URL=" . $_ENV["JAWSDB_URL"]);
+            }
+            if (getenv("JAWSDB_URL")) {
+                $url = parse_url(getenv("JAWSDB_URL"));
 
-            $server   = $url["host"];
-            $username = $url["user"];
-            $password = $url["pass"];
-            $database = substr($url["path"], 1);
+                $server   = $url["host"];
+                $username = $url["user"];
+                $password = $url["pass"];
+                $database = substr($url["path"], 1);
 
-            // ✅ Thêm port + protocol=TCP để Heroku không lỗi [2002]
-            $dsn = "mysql:host={$server};port=3306;dbname={$database};charset=utf8;protocol=TCP";
+                $dsn = "mysql:host={$server};port=3306;dbname={$database};charset=utf8;protocol=TCP";
 
-            $db = new PDO($dsn, $username, $password);
-        } else {
-            // Chạy local (XAMPP)
-            $dsn = "mysql:host=localhost;dbname=database;charset=utf8";
-            $db = new PDO($dsn, "root", "");
+                $db = new PDO($dsn, $username, $password);
+            } else {
+                $dsn = "mysql:host=localhost;dbname=database;charset=utf8";
+                $db = new PDO($dsn, "root", "");
+            }
+
+            
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $db;
         }
-
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $db;
+        echo "<pre>";
+        echo "JAWSDB_URL: " . getenv("JAWSDB_URL") . "\n";
+        echo "</pre>";
+    } catch (Exception $e) {
+        echo "Error " . $e->getMessage();
+        die();
     }
-} catch (Exception $e) {
-    echo "Error " . $e->getMessage();
-    die();
-}
 
 $khachhang = $db->query("select * from khachhang");
 $sanpham = $db->query("select * from sanpham");
