@@ -2,20 +2,22 @@
 
     try {
     if (class_exists("PDO")) {
+        // Nếu chạy trên Heroku có biến môi trường JAWSDB_URL
         if (getenv("JAWSDB_URL")) {
-            // 🔹 Nếu chạy trên Heroku (JawsDB)
             $url = parse_url(getenv("JAWSDB_URL"));
+
             $server   = $url["host"];
             $username = $url["user"];
             $password = $url["pass"];
-            $database = ltrim($url["path"], '/');
+            $database = substr($url["path"], 1);
 
-            // ⚡ Bắt buộc dùng protocol=TCP để tránh lỗi 2002
+            // ✅ Thêm port + protocol=TCP để Heroku không lỗi [2002]
             $dsn = "mysql:host={$server};port=3306;dbname={$database};charset=utf8;protocol=TCP";
+
             $db = new PDO($dsn, $username, $password);
         } else {
-            // 🔹 Nếu chạy local (XAMPP)
-            $dsn = "mysql:host=127.0.0.1;dbname=database;charset=utf8;protocol=TCP";
+            // Chạy local (XAMPP)
+            $dsn = "mysql:host=localhost;dbname=database;charset=utf8";
             $db = new PDO($dsn, "root", "");
         }
 
@@ -23,7 +25,7 @@
         return $db;
     }
 } catch (Exception $e) {
-    echo "Error: " . $e->getMessage();
+    echo "Error " . $e->getMessage();
     die();
 }
 
