@@ -15,7 +15,7 @@
     <div class="wrap">
 
         <?php
-        include __DIR__ . "../../UI/layout/header.php"
+            include("../../UI/layout/header.php")
         ?>
 
         <div class="container">
@@ -62,7 +62,7 @@
             </div>
         </div>
         <?php
-        include __DIR__ . "../../UI/layout/footer.php"
+            include("../../UI/layout/footer.php")
         ?>
     </div>
 

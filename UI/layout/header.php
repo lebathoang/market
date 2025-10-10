@@ -149,7 +149,7 @@ $row = $cart->fetch(PDO::FETCH_ASSOC);
           <span>Giỏ hàng <?php echo $row['total'] ?></span>
         </div>
       </a>
-      <a class="choose" href="../like/index.php">
+      <a class="choose" href="#">
         <div class="icon">
           <i class="fa-solid fa-heart"></i>
           <span>Yêu thích 0</span>

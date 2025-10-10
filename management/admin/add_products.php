@@ -68,6 +68,9 @@
     .form {
         margin-left: 45px;
     }
+    .input {
+        width: 555px;
+    }
     .buy {
         border: none;
         border-radius: 15px;
@@ -178,39 +181,39 @@
                     <table>
                         <tr>
                             <td>Nhập tên sản phẩm</td>
-                            <td><input type="text" name="TenSP"></td>
+                            <td><input class="input" type="text" name="TenSP"></td>
                         </tr>
                         <tr>
                             <td>Nhập hình ảnh</td>
-                            <td><input type="text" name="Hinhanh"></td>
+                            <td><input class="input" type="text" name="Hinhanh"></td>
                         </tr>
                         <tr>
                             <td>Nhập giá sản phẩm</td>
-                            <td><input type="text" name="Gia"></td>
+                            <td><input class="input" type="text" name="Gia"></td>
                         </tr>
                         <tr>
                             <td>Nhập số lượng</td>
-                            <td><input type="text" name="Soluong"></td>
+                            <td><input class="input" type="text" name="Soluong"></td>
                         </tr>
                         <tr>
                             <td>Nhập mô tả</td>
-                            <td><input type="text" name="Mota"></td>
+                            <td><input class="input" type="text" name="Mota"></td>
                         </tr>
                         <tr>
                             <td>Nhập loại sản phẩm</td>
-                            <td><input type="text" name="LoaiSP"></td>
+                            <td><input class="input" type="text" name="LoaiSP"></td>
                         </tr>
                         <tr>
                             <td>Nhập danh mục</td>
-                            <td><input type="text" name="Danhmuc"></td>
+                            <td><input class="input" type="text" name="Danhmuc"></td>
                         </tr>
                         <tr>
                             <td>Nhập giảm giá</td>
-                            <td><input type="text" name="Giamgia"></td>
+                            <td><input class="input" type="text" name="Giamgia"></td>
                         </tr>
                         <tr>
                             <td>Nhập xuất xứ</td>
-                            <td><input type="text" name="Xuatxu"></td>
+                            <td><input class="input" type="text" name="Xuatxu"></td>
                         </tr>
                         <tr>
                             <td><input class="buy" type="submit" value="Thêm sản phẩm" name="save"></td>

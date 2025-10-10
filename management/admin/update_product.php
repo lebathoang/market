@@ -94,7 +94,9 @@ try {
     .form {
         margin-left: 45px;
     }
-
+    .input {
+        width: 555px;
+    }
     .buy {
         border: none;
         border-radius: 15px;
@@ -119,7 +121,7 @@ try {
         <div class="sidebar col-lg-2 col-md-3" style="position: fixed;">
             <div class="sidebar-brand">
                 <i class="fas fa-store me-2"></i>
-                <a class="logo" href="../component/index.php">MARKET ADMIN</a>
+                <a class="logo" href="./index.php">MARKET ADMIN</a>
             </div>
             <hr class="sidebar-divider">
             <ul class="nav flex-column">
@@ -206,39 +208,39 @@ try {
                     <table>
                         <tr>
                             <td>Nhập tên sản phẩm</td>
-                            <td><input type="text" name="TenSP"></td>
+                            <td><input class="input" type="text" name="TenSP" value="<?php echo $row["TenSP"]?>"></td>
                         </tr>
                         <tr>
                             <td>Nhập hình ảnh</td>
-                            <td><input type="text" name="Hinhanh"></td>
+                            <td><input class="input" type="text" name="Hinhanh" value="<?php echo $row["Hinhanh"]?>"></td>
                         </tr>
                         <tr>
                             <td>Nhập giá sản phẩm</td>
-                            <td><input type="text" name="Gia"></td>
+                            <td><input class="input" type="text" name="Gia" value="<?php echo $row["Gia"]?>"></td>
                         </tr>
                         <tr>
                             <td>Nhập số lượng</td>
-                            <td><input type="text" name="Soluong"></td>
+                            <td><input class="input" type="text" name="Soluong" value="<?php echo $row["Soluong"]?>"></td>
                         </tr>
                         <tr>
                             <td>Nhập mô tả</td>
-                            <td><input type="text" name="Mota"></td>
+                            <td><input class="input" type="text" name="Mota" value="<?php echo $row["Mota"]?>"></td>
                         </tr>
                         <tr>
                             <td>Nhập loại sản phẩm</td>
-                            <td><input type="text" name="LoaiSP"></td>
+                            <td><input class="input" type="text" name="LoaiSP" value="<?php echo $row["LoaiSP"]?>"></td>
                         </tr>
                         <tr>
                             <td>Nhập danh mục</td>
-                            <td><input type="text" name="Danhmuc"></td>
+                            <td><input class="input" type="text" name="Danhmuc" value="<?php echo $row["Danhmuc"]?>"></td>
                         </tr>
                         <tr>
                             <td>Nhập giảm giá</td>
-                            <td><input type="text" name="Giamgia"></td>
+                            <td><input class="input" type="text" name="Giamgia" value="<?php echo $row["Giamgia"]?>"></td>
                         </tr>
                         <tr>
                             <td>Nhập xuất xứ</td>
-                            <td><input type="text" name="Xuatxu"></td>
+                            <td><input class="input" type="text" name="Xuatxu" value="<?php echo $row["Xuatxu"]?>"></td>
                         </tr>
                         <tr>
                             <td><input class="buy" type="submit" value="Cập nhật sản phẩm" name="save"></td>

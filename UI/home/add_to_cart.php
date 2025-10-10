@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/connect.php';
+require_once dirname(__DIR__, 2) . '/connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['MaSP'])) {
     $masp = (int)$_POST['MaSP'];

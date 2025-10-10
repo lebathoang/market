@@ -119,7 +119,7 @@ try {
         <div class="sidebar col-lg-2 col-md-3" style="position: fixed;">
             <div class="sidebar-brand">
                 <i class="fas fa-store me-2"></i>
-                <a class="logo" href="../component/index.php">MARKET ADMIN</a>
+                <a class="logo" href="./index.php">MARKET ADMIN</a>
             </div>
             <hr class="sidebar-divider">
             <ul class="nav flex-column">
